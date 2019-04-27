@@ -1,0 +1,21 @@
+version: '2'
+services:
+  elasticsearch:
+    image: 'elasticsearch:6.6.1'
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - discovery.type=single-node
+      - http.port=9200
+  kafka:
+    image: 'landoop/kafka-lenses-dev'
+    ports:
+      - '3030:3030'
+      - '9092:9092'
+      - '2181:2181'
+      - '8081:8081'
+    environment:
+      - ADV_HOST=127.0.0.1
+      - EULA=https://dl.lenses.stream/d/?id=db9f1302-909e-4514-8fd7-0e68fabb1370
+      - SAMPLEDATA=0
